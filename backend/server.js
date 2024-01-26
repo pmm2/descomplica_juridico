@@ -82,6 +82,8 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
+//UTILS
+
 // Function to calculate the distance between two points (cities)
 function calculateDistance(point1, point2) {
   const xDiff = point1.x - point2.x;
