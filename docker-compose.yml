@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  # Node.js backend service
+  backend:
+    image: node:18
+    working_dir: /app/backend
+    volumes:
+      - ./backend:/app/backend
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: development
+    command: npm start
+
+  # React frontend service
+  frontend:
+    image: node:18
+    working_dir: /app/frontend
+    volumes:
+      - ./frontend:/app/frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+    command: npm start
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/custom-script.sql:/docker-entrypoint-initdb.d/02-custom-script.sql  # Prefix with 02 to ensure it's executed second
