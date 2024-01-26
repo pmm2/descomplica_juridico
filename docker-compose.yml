@@ -11,7 +11,9 @@ services:
       - "3001:3001"
     environment:
       NODE_ENV: development
-    command: npm start
+    command: >
+      bash -c "npm install && npm start"
+
 
   # React frontend service
   frontend:
@@ -23,7 +25,8 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: development
-    command: npm start
+    command: >
+      bash -c "npm install && npm start"
 
   postgres:
     image: postgres:latest
