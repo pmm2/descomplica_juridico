@@ -1,3 +1,4 @@
+const { pool } = require("./user.js");
 // Function to calculate the distance between two points (cities)
 function calculateDistance(point1, point2) {
   const xDiff = point1.x - point2.x;
@@ -55,8 +56,7 @@ function solveTSP(cities) {
 
   return minRoute.map((index) => cities[index]);
 }
-const calculatePath = async (pool) => {
-  console.log("in###########");
+const calculatePath = async () => {
   const query = await pool.query("SELECT * FROM users");
   const clients = query.rows;
   const optimalRoute = solveTSP(clients);

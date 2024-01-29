@@ -34,6 +34,7 @@ async function searchUsers(req, res) {
   res.json(result.rows);
 }
 module.exports = {
+  pool,
   searchUsers,
   getAllUsers,
   createUser,

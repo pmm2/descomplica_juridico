@@ -16,7 +16,7 @@ app.get("/users/:searchTerm", searchUsers);
 
 app.get("/calculatePath", async (req, res) => {
   try {
-    result = await calculatePath(pool, res);
+    result = await calculatePath(res);
     res.json(result);
   } catch (error) {
     console.error("Error:", error);
