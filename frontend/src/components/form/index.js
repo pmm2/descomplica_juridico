@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { TextField, Button, Stack, Container } from "@mui/material";
 
-const MyForm = ({ fetchData }) => {
+const MyForm = ({ fetchData, API_URL }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,13 +15,9 @@ const MyForm = ({ fetchData }) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:3001/users",
-        formData
-      );
+      const response = await axios.post(`${API_URL}/users`, formData);
       console.log("User added successfully:", response.data);
 
-      // Optionally, you can reset the form after successful submission
       setFormData({
         name: "",
         email: "",

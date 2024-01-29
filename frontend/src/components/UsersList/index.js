@@ -14,26 +14,23 @@ import {
 
 import axios from "axios";
 
-const UserList = ({ fetchData, users, setUsers }) => {
+const UserList = ({ fetchData, users, API_URL }) => {
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [typingTimeout, setTypingTimeout] = useState(null);
 
   useEffect(() => {
-    // Clear the previous timeout
     if (typingTimeout) {
       clearTimeout(typingTimeout);
     }
-
-    // Set a new timeout
+    const timeToFetch = 500;
     const timeoutId = setTimeout(() => {
       fetchData(searchTerm);
-    }, 500); // Adjust the delay (in milliseconds) as needed
+    }, timeToFetch);
 
     setTypingTimeout(timeoutId);
 
-    // Cleanup on unmount or when searchTerm changes
     return () => {
       clearTimeout(timeoutId);
     };
@@ -41,7 +38,8 @@ const UserList = ({ fetchData, users, setUsers }) => {
 
   const calculatePath = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/calculatePath");
+      console.log(`${API_URL}/calculatePath`);
+      const response = await axios.get(`${API_URL}/calculatePath`);
       console.log(response.data.optimalRoute);
       const route = response.data.optimalRoute;
 

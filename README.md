@@ -30,7 +30,8 @@ SELECT * FROM users WHERE name ILIKE $1 OR email ILIKE $1 OR phone ILIKE $1 OR C
 
 ### Problema de Cálculo de Rota
 
-Utilizei o problema do caixeiro-viajante para abordar o cálculo de rota, pois ele se alinha perfeitamente com a descrição do problema fornecido
+Utilizei o problema do caixeiro-viajante para abordar o cálculo de rota, pois ele se alinha perfeitamente com a descrição do problema fornecido.
+Observações: o problema do caixeiro viajante é efetivo apenas até 23 arestas; acima desse número, seria necessário recorrer a aproximações, pois se trata de um problema NP-hard. Acredito que isso esteja fora do escopo deste projeto.
 
 ## English Version:
 
@@ -65,3 +66,4 @@ SELECT * FROM users WHERE name ILIKE $1 OR email ILIKE $1 OR phone ILIKE $1 OR C
 ### Calculate Route Problem
 
 I utilized the traveling salesman problem to address the route calculation, as it perfectly aligns with the description of the provided problem.
+Observations: The traveling salesman problem is effective only up to 23 edges; beyond that, we would have to resort to approximation algorithms, as it is an NP-hard problem. I believe this is beyond the scope of this project.

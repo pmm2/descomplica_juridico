@@ -4,10 +4,11 @@ import { useState } from "react";
 import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 function App() {
+  const API_URL = "http://localhost:3001";
   const [users, setUsers] = useState([]);
   const fetchData = async (searchTerm) => {
     try {
-      let endpoint = "http://localhost:3001/users";
+      let endpoint = `${API_URL}/users`;
 
       if (searchTerm) {
         endpoint += `/${encodeURIComponent(searchTerm)}`;
@@ -28,10 +29,10 @@ function App() {
 
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <MyForm fetchData={fetchData} />
+          <MyForm API_URL={API_URL} fetchData={fetchData} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <UserList fetchData={fetchData} users={users} />
+          <UserList API_URL={API_URL} fetchData={fetchData} users={users} />
         </Grid>
       </Grid>
     </>
